@@ -5,7 +5,7 @@ date: ""
 output: 
   pdf_document:
     includes:
-      in_header: "../header.tex"
+      in_header: "../lib/in_header.tex"
 output_file: ../output.pdf
 header-includes:
   - \renewcommand{\mytitle}{TITLE title Title TiTlE tItLe TItLE tiTlE}
