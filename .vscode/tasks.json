@@ -11,13 +11,30 @@
       ],
       "problemMatcher": [],
       "presentation": {
-        "reveal": "silent", // don't show terminal on success
-        "revealProblems": "onProblem", // show if errors/warnings
-        "focus": false, // don't steal focus
-        "panel": "dedicated", // reuse the same panel
-        "showReuseMessage": false, // don't spam reuse messages
-        "clear": true // clear terminal each run
+        "reveal": "silent",
+        "revealProblems": "onProblem",
+        "focus": false,
+        "panel": "dedicated",
+        "showReuseMessage": false,
+        "clear": true
       }
+    },
+    {
+      "label": "Open output.pdf in Zathura",
+      "type": "shell",
+      "command": "zathura",
+      "args": ["${workspaceFolder}/output.pdf", "--fork"],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "presentation": {
+        "reveal": "never",
+        "focus": false,
+        "panel": "dedicated",
+        "showReuseMessage": false,
+        "clear": false
+      },
+      "problemMatcher": []
     }
   ]
 }
