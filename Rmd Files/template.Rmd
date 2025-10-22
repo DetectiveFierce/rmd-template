@@ -1,17 +1,15 @@
 ---
 title: ""
 author: ""
-date: ""
-output: 
+output:
   pdf_document:
     includes:
       in_header: "../lib/in_header.tex"
-output_file: ../output.pdf
 header-includes:
   - \renewcommand{\mytitle}{TITLE title Title TiTlE tItLe TItLE tiTlE}
   - \renewcommand{\myauthor}{Annie Lytics}
+knit: (function(input, encoding) {source("../knit.R"); knit(input)})
 ---
-
 \thispagestyle{firstpage}
 \UNsection{\mytitle}{1.5}
 
