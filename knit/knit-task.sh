@@ -64,7 +64,7 @@ rm -f "${report_file}" "${viewer_script}"
 VIEWER
   chmod +x "$viewer_script"
 
-  if hyprctl dispatch exec "[float;center;size 820 680] ghostty --font-size=10 --confirm-close-surface=false -e ${viewer_script}" >/dev/null 2>&1; then
+  if hyprctl dispatch exec "[float;center;size 820 680;rounding 18] ghostty --title 'Rmd Knit Failed' --font-size=10 --window-padding-x=20 --window-padding-y=16 --confirm-close-surface=false -e ${viewer_script}" >/dev/null 2>&1; then
     launched=1
   fi
 fi
