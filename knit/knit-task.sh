@@ -49,6 +49,8 @@ report_file="$(mktemp /tmp/rmd-knit-failure.XXXXXX.log)"
 
 launched=0
 if command -v hyprctl >/dev/null 2>&1 && command -v ghostty >/dev/null 2>&1; then
+  popup_title="Rmd Knit Failed"
+  rounding_rule='rounding 18,title:^(Rmd\ Knit\ Failed)$'
   viewer_script="$(mktemp /tmp/rmd-knit-viewer.XXXXXX.sh)"
   cat >"$viewer_script" <<VIEWER
 #!/usr/bin/env bash
@@ -64,7 +66,9 @@ rm -f "${report_file}" "${viewer_script}"
 VIEWER
   chmod +x "$viewer_script"
 
-  if hyprctl dispatch exec "[float;center;size 820 680;rounding 18] ghostty --title 'Rmd Knit Failed' --font-size=10 --window-padding-x=20 --window-padding-y=16 --confirm-close-surface=false -e ${viewer_script}" >/dev/null 2>&1; then
+  hyprctl keyword windowrulev2 "$rounding_rule" >/dev/null 2>&1 || true
+
+  if hyprctl dispatch exec "[float;center;size 820 680] ghostty --title '${popup_title}' --font-size=10 --window-padding-x=20 --window-padding-y=16 --shell-integration-features=cursor,no-sudo,no-ssh-env,no-ssh-terminfo,path --confirm-close-surface=false -e ${viewer_script}" >/dev/null 2>&1; then
     launched=1
   fi
 fi
