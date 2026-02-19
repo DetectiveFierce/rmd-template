@@ -59,7 +59,7 @@ rm -f "${report_file}" "${viewer_script}"
 VIEWER
   chmod +x "$viewer_script"
 
-  if hyprctl dispatch exec "[float;no_initial_focus;center;size 1040 680] ghostty --font-size=10 --confirm-close-surface=false -e ${viewer_script}" >/dev/null 2>&1; then
+  if hyprctl dispatch exec "[float;no_initial_focus;center;size 820 680] ghostty --font-size=10 --confirm-close-surface=false -e ${viewer_script}" >/dev/null 2>&1; then
     launched=1
   fi
 fi
