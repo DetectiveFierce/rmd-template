@@ -48,7 +48,7 @@ report_file="$(mktemp /tmp/rmd-knit-failure.XXXXXX.log)"
 } >"$report_file"
 
 launched=0
-if command -v hyprctl >/dev/null 2>&1 && command -v kitty >/dev/null 2>&1; then
+if command -v hyprctl >/dev/null 2>&1 && command -v ghostty >/dev/null 2>&1; then
   viewer_script="$(mktemp /tmp/rmd-knit-viewer.XXXXXX.sh)"
   cat >"$viewer_script" <<VIEWER
 #!/usr/bin/env bash
@@ -59,7 +59,7 @@ rm -f "${report_file}" "${viewer_script}"
 VIEWER
   chmod +x "$viewer_script"
 
-  if hyprctl dispatch exec "[float;no_initial_focus;center;size 1400 900] kitty --title 'Rmd Knit Failed' --hold ${viewer_script}" >/dev/null 2>&1; then
+  if hyprctl dispatch exec "[float;no_initial_focus;center;size 1400 900] ghostty -e ${viewer_script}" >/dev/null 2>&1; then
     launched=1
   fi
 fi
