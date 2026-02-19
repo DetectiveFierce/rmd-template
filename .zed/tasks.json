@@ -1,0 +1,11 @@
+[
+  {
+    "label": "Knit Current Rmd",
+    "command": "./knit/knit-task.sh \"$ZED_FILE\"",
+    "cwd": "$ZED_WORKTREE_ROOT",
+    "use_new_terminal": false,
+    "allow_concurrent_runs": false,
+    "reveal": "never",
+    "hide": "never"
+  }
+]
