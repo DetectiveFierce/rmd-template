@@ -2,3 +2,5 @@
 .Rhistory
 .RData
 .Ruserdata
+.zed/knit-on-save.log
+.zed/.knit-on-save.lock

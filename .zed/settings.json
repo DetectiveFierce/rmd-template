@@ -1,0 +1,16 @@
+{
+  "file_types": {
+    "Markdown": ["Rmd"]
+  },
+  "languages": {
+    "Markdown": {
+      "format_on_save": "on",
+      "formatter": {
+        "external": {
+          "command": "./knit/knit-on-save.sh",
+          "arguments": ["{buffer_path}"]
+        }
+      }
+    }
+  }
+}

@@ -8,7 +8,7 @@ output:
 header-includes:
   - \renewcommand{\mytitle}{TITLE title Title TiTlE tItLe TItLE tiTlE}
   - \renewcommand{\myauthor}{Annie Lytics}
-knit: (function(input, encoding) {source("../knit.R"); knit(input)})
+knit: (function(input, encoding) {source("../knit/knit.R"); knit(input)})
 ---
 \thispagestyle{firstpage}
 \UNsection{\mytitle}{1.5}
