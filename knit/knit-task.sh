@@ -54,7 +54,12 @@ if command -v hyprctl >/dev/null 2>&1 && command -v ghostty >/dev/null 2>&1; the
 #!/usr/bin/env bash
 cat "${report_file}"
 echo
-read -r -p "Press Enter to close..." _
+printf "Press Enter or Escape to close..."
+while IFS= read -rsn1 key; do
+  if [[ -z "\$key" || "\$key" == \$'\\e' ]]; then
+    break
+  fi
+done
 rm -f "${report_file}" "${viewer_script}"
 VIEWER
   chmod +x "$viewer_script"
