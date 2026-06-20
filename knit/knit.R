@@ -8,7 +8,7 @@ knit <- function(input) {
     input_abs,
     output_file = "output.pdf",
     output_dir = output_dir,
-    knit_root_dir = rprojroot::find_rstudio_root_file(),
+    knit_root_dir = output_dir,
     quiet = TRUE
   )
 }

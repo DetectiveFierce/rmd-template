@@ -4,3 +4,6 @@
 .Ruserdata
 .zed/knit-on-save.log
 .zed/.knit-on-save.lock
+output.pdf
+*.knit.md
+*_files/

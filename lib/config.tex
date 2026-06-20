@@ -19,8 +19,33 @@
 \definecolor{myblue}{RGB}{0, 140, 158}
 \definecolor{myorange}{RGB}{240, 110, 41}
 \definecolor{mygrey}{RGB}{156, 156, 156}
+\definecolor{codecommentcolor}{RGB}{156, 156, 156}
 \definecolor{dark}{HTML}{83B02F}
 \definecolor{light}{HTML}{e1f0c7}
+
+% Code chunk styling
+\makeatletter
+\AtBeginDocument{%
+  \definecolor{shadecolor}{RGB}{252,249,236}%
+  \@ifundefined{RecustomVerbatimEnvironment}{}{%
+    \@ifundefined{Highlighting}{}{%
+      \RecustomVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\},fontsize=\footnotesize}%
+    }%
+  }%
+  \@ifundefined{KeywordTok}{}{\renewcommand{\KeywordTok}[1]{\textcolor{mygreen}{\textbf{#1}}}}%
+  \@ifundefined{ControlFlowTok}{}{\renewcommand{\ControlFlowTok}[1]{\textcolor{mygreen}{\textbf{#1}}}}%
+  \@ifundefined{FunctionTok}{}{\renewcommand{\FunctionTok}[1]{\textcolor{myblue}{#1}}}%
+  \@ifundefined{BuiltInTok}{}{\renewcommand{\BuiltInTok}[1]{\textcolor{myblue}{#1}}}%
+  \@ifundefined{CommentTok}{}{\renewcommand{\CommentTok}[1]{\textcolor{codecommentcolor}{\textit{#1}}}}%
+  \@ifundefined{StringTok}{}{\renewcommand{\StringTok}[1]{\textcolor{myred}{#1}}}%
+  \@ifundefined{CharTok}{}{\renewcommand{\CharTok}[1]{\textcolor{myred}{#1}}}%
+  \@ifundefined{DecValTok}{}{\renewcommand{\DecValTok}[1]{\textcolor{myorange}{#1}}}%
+  \@ifundefined{FloatTok}{}{\renewcommand{\FloatTok}[1]{\textcolor{myorange}{#1}}}%
+  \@ifundefined{BaseNTok}{}{\renewcommand{\BaseNTok}[1]{\textcolor{myorange}{#1}}}%
+  \@ifundefined{OtherTok}{}{\renewcommand{\OtherTok}[1]{\textcolor{myorange}{#1}}}%
+  \@ifundefined{OperatorTok}{}{\renewcommand{\OperatorTok}[1]{\textcolor{black}{#1}}}%
+}
+\makeatother
 
 % Math spacing adjustments
 \setlength{\abovedisplayskip}{5pt}
