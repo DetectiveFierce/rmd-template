@@ -23,16 +23,43 @@
 \definecolor{dark}{HTML}{83B02F}
 \definecolor{light}{HTML}{e1f0c7}
 
-% Code chunk styling: Hate of Nature Light
-% Vivid green accents and deeper companion colors on the warm background.
-\definecolor{codeforeground}{HTML}{4B7620}
-\definecolor{codecomment}{HTML}{627248}
-\definecolor{codepink}{HTML}{BF2056}
-\definecolor{codegold}{HTML}{826A0C}
-\definecolor{codeorange}{HTML}{A94F0A}
-\definecolor{codepurple}{HTML}{7850AF}
-\definecolor{codecyan}{HTML}{007A87}
-\definecolor{codegreen}{HTML}{679B19}
+% Code chunk styling: light adaptation of the supplied Hate of Nature palette.
+% Lime identifiers, gold strings, violet constants, magenta keywords,
+% and rose punctuation on the original warm cream background.
+\definecolor{codeforeground}{HTML}{6D9F18}
+\definecolor{codecomment}{HTML}{7D8D58}
+\definecolor{codepink}{HTML}{DF1964}
+\definecolor{codepunctuation}{HTML}{D75A80}
+\definecolor{codegold}{HTML}{A38B13}
+\definecolor{codepurple}{HTML}{9363CC}
+\colorlet{codegreen}{codeforeground}
+
+% Pandoc keeps R brackets inside NormalTok. Color those marks
+% separately without changing identifiers, whitespace, or escaped characters.
+\ExplSyntaxOn
+\cs_new_protected:Npn \CodeNormalToken #1
+  {
+    \group_begin:
+    \tl_set:Nn \l_tmpa_tl {#1}
+    \tl_replace_all:Nnn \l_tmpa_tl {(} {{\textcolor{codepunctuation}{(}}}
+    \tl_replace_all:Nnn \l_tmpa_tl {)} {{\textcolor{codepunctuation}{)}}}
+    \tl_replace_all:Nnn \l_tmpa_tl {[} {{\textcolor{codepunctuation}{[}}}
+    \tl_replace_all:Nnn \l_tmpa_tl {]} {{\textcolor{codepunctuation}{]}}}
+    \tl_replace_all:Nnn \l_tmpa_tl {\{} {{\textcolor{codepunctuation}{\{}}}
+    \tl_replace_all:Nnn \l_tmpa_tl {\}} {{\textcolor{codepunctuation}{\}}}}
+    \textcolor{codeforeground}{\tl_use:N \l_tmpa_tl}
+    \group_end:
+  }
+\cs_new_protected:Npn \CodeFunctionToken #1
+  {
+    \str_case:nnF {#1}
+      {
+        {stop}{\textcolor{codepink}{#1}}
+        {return}{\textcolor{codepink}{#1}}
+      }
+      {\textcolor{codegreen}{#1}}
+  }
+\ExplSyntaxOff
 
 \makeatletter
 \AtBeginDocument{%
@@ -42,19 +69,19 @@
       \RecustomVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\},fontsize=\footnotesize,formatcom=\color{codeforeground}}%
     }%
   }%
-  \@ifundefined{NormalTok}{}{\renewcommand{\NormalTok}[1]{\textcolor{codeforeground}{#1}}}%
-  \@ifundefined{KeywordTok}{}{\renewcommand{\KeywordTok}[1]{\textcolor{codegreen}{\textbf{#1}}}}%
-  \@ifundefined{ControlFlowTok}{}{\renewcommand{\ControlFlowTok}[1]{\textcolor{codepink}{\textbf{#1}}}}%
+  \@ifundefined{NormalTok}{}{\renewcommand{\NormalTok}[1]{\CodeNormalToken{#1}}}%
+  \@ifundefined{KeywordTok}{}{\renewcommand{\KeywordTok}[1]{\textcolor{codepink}{#1}}}%
+  \@ifundefined{ControlFlowTok}{}{\renewcommand{\ControlFlowTok}[1]{\textcolor{codepink}{#1}}}%
   \@ifundefined{DataTypeTok}{}{\renewcommand{\DataTypeTok}[1]{\textcolor{codegreen}{#1}}}%
-  \@ifundefined{FunctionTok}{}{\renewcommand{\FunctionTok}[1]{\textcolor{codecyan}{#1}}}%
+  \@ifundefined{FunctionTok}{}{\renewcommand{\FunctionTok}[1]{\CodeFunctionToken{#1}}}%
   \@ifundefined{BuiltInTok}{}{\renewcommand{\BuiltInTok}[1]{\textcolor{codegreen}{#1}}}%
-  \@ifundefined{ExtensionTok}{}{\renewcommand{\ExtensionTok}[1]{\textcolor{codecyan}{#1}}}%
+  \@ifundefined{ExtensionTok}{}{\renewcommand{\ExtensionTok}[1]{\textcolor{codegreen}{#1}}}%
   \@ifundefined{ImportTok}{}{\renewcommand{\ImportTok}[1]{\textcolor{codegreen}{#1}}}%
-  \@ifundefined{VariableTok}{}{\renewcommand{\VariableTok}[1]{\textcolor{codeorange}{#1}}}%
+  \@ifundefined{VariableTok}{}{\renewcommand{\VariableTok}[1]{\textcolor{codegreen}{#1}}}%
   \@ifundefined{AttributeTok}{}{\renewcommand{\AttributeTok}[1]{\textcolor{codegreen}{#1}}}%
-  \@ifundefined{OperatorTok}{}{\renewcommand{\OperatorTok}[1]{\textcolor{codepink}{#1}}}%
-  \@ifundefined{OtherTok}{}{\renewcommand{\OtherTok}[1]{\textcolor{codepink}{#1}}}%
-  \@ifundefined{SpecialCharTok}{}{\renewcommand{\SpecialCharTok}[1]{\textcolor{codepink}{#1}}}%
+  \@ifundefined{OperatorTok}{}{\renewcommand{\OperatorTok}[1]{\textcolor{codegreen}{#1}}}%
+  \@ifundefined{OtherTok}{}{\renewcommand{\OtherTok}[1]{\textcolor{codegreen}{#1}}}%
+  \@ifundefined{SpecialCharTok}{}{\renewcommand{\SpecialCharTok}[1]{\textcolor{codegreen}{#1}}}%
   \@ifundefined{StringTok}{}{\renewcommand{\StringTok}[1]{\textcolor{codegold}{#1}}}%
   \@ifundefined{CharTok}{}{\renewcommand{\CharTok}[1]{\textcolor{codegold}{#1}}}%
   \@ifundefined{VerbatimStringTok}{}{\renewcommand{\VerbatimStringTok}[1]{\textcolor{codegold}{#1}}}%
@@ -63,11 +90,11 @@
   \@ifundefined{FloatTok}{}{\renewcommand{\FloatTok}[1]{\textcolor{codepurple}{\textbf{#1}}}}%
   \@ifundefined{BaseNTok}{}{\renewcommand{\BaseNTok}[1]{\textcolor{codepurple}{\textbf{#1}}}}%
   \@ifundefined{ConstantTok}{}{\renewcommand{\ConstantTok}[1]{\textcolor{codepurple}{\textbf{#1}}}}%
-  \@ifundefined{CommentTok}{}{\renewcommand{\CommentTok}[1]{\textcolor{codecomment}{\textit{#1}}}}%
-  \@ifundefined{CommentVarTok}{}{\renewcommand{\CommentVarTok}[1]{\textcolor{codecomment}{\textit{#1}}}}%
-  \@ifundefined{DocumentationTok}{}{\renewcommand{\DocumentationTok}[1]{\textcolor{codecomment}{\textit{#1}}}}%
-  \@ifundefined{AnnotationTok}{}{\renewcommand{\AnnotationTok}[1]{\textcolor{codecomment}{\textit{#1}}}}%
-  \@ifundefined{InformationTok}{}{\renewcommand{\InformationTok}[1]{\textcolor{codecyan}{#1}}}%
+  \@ifundefined{CommentTok}{}{\renewcommand{\CommentTok}[1]{\textcolor{codecomment}{#1}}}%
+  \@ifundefined{CommentVarTok}{}{\renewcommand{\CommentVarTok}[1]{\textcolor{codecomment}{#1}}}%
+  \@ifundefined{DocumentationTok}{}{\renewcommand{\DocumentationTok}[1]{\textcolor{codecomment}{#1}}}%
+  \@ifundefined{AnnotationTok}{}{\renewcommand{\AnnotationTok}[1]{\textcolor{codecomment}{#1}}}%
+  \@ifundefined{InformationTok}{}{\renewcommand{\InformationTok}[1]{\textcolor{codegreen}{#1}}}%
   \@ifundefined{PreprocessorTok}{}{\renewcommand{\PreprocessorTok}[1]{\textcolor{codepink}{#1}}}%
   \@ifundefined{RegionMarkerTok}{}{\renewcommand{\RegionMarkerTok}[1]{\textcolor{codecomment}{\textbf{#1}}}}%
   \@ifundefined{WarningTok}{}{\renewcommand{\WarningTok}[1]{\textcolor{codepink}{\textbf{#1}}}}%

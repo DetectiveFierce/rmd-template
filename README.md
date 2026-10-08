@@ -80,23 +80,18 @@ Zed users can run the `Knit Current Rmd` task. VS Code users can run the `Knit` 
 - Section formatting.
 - Hate of Nature Light syntax highlighting for code chunks.
 
-The code chunks use a light adaptation of Hate of Nature, with vivid leaf green and deeper pink, yellow, orange, violet, and cyan accents. The existing warm background (`#FCF9EC`) and footnote-sized code are preserved. Code colors are separate from the document's other color definitions.
+The code chunks adapt the supplied Hate of Nature reference to the existing warm cream background (`#FCF9EC`). Lime green carries identifiers, function calls, named arguments, and operators; magenta marks keywords, rose marks punctuation, gold marks strings, and violet marks constants. Footnote-sized code and the document's other colors are preserved.
 
 | Syntax role | Color |
 |---|---|
-| Plain code | Grass green `#4B7620` |
-| Comments and documentation | Moss `#627248`, italic |
-| Keywords | Bright leaf green `#679B19`, bold |
-| Control flow | Pink `#BF2056`, bold |
-| Operators, assignment, and special characters | Pink `#BF2056` |
-| Strings and characters | Ochre `#826A0C` |
-| Variables | Burnt orange `#A94F0A` |
-| Named arguments | Bright leaf green `#679B19` |
-| Numbers and constants | Violet `#7850AF`, bold |
-| Functions | Cyan `#007A87` |
-| Built-ins, types, and imports | Bright leaf green `#679B19` |
+| Identifiers, functions, named arguments, and operators | Lime green `#6D9F18` |
+| Comments and documentation | Muted olive `#7D8D58` |
+| Keywords, control flow, `stop`, and `return` | Magenta `#DF1964` |
+| Parentheses, brackets, and braces | Rose `#D75A80` |
+| Strings and characters | Gold `#A38B13` |
+| Numbers and constants | Violet `#9363CC`, bold |
 
-Pandoc's R tokenizer determines each token category; identifiers it classifies as plain code use grass green. Brighter leaf green highlights keywords and named arguments.
+Pandoc determines token categories. The shared configuration also colors punctuation within plain tokens, so R's brackets follow the reference palette.
 
 Preview rendered with the shared LaTeX configuration:
 
