@@ -80,11 +80,12 @@ Zed users can run the `Knit Current Rmd` task. VS Code users can run the `Knit` 
 - Section formatting.
 - Hate of Nature Light syntax highlighting for code chunks.
 
-The code chunks adapt the supplied Hate of Nature reference to the existing warm cream background (`#FCF9EC`). Lime green carries identifiers, function calls, named arguments, and operators; magenta marks keywords, rose marks punctuation, gold marks strings, and violet marks constants. Footnote-sized code and the document's other colors are preserved.
+The code chunks adapt the supplied Hate of Nature reference to the existing warm cream background (`#FCF9EC`). Lime green carries identifiers, named arguments, and operators; copper distinguishes ordinary function calls; magenta marks keywords, rose marks punctuation, gold marks strings, and violet marks constants. Footnote-sized code and the document's other colors are preserved.
 
 | Syntax role | Color |
 |---|---|
-| Identifiers, functions, named arguments, and operators | Lime green `#6D9F18` |
+| Identifiers, named arguments, and operators | Lime green `#6D9F18` |
+| Ordinary function calls | Copper `#C47732` |
 | Comments and documentation | Muted olive `#7D8D58` |
 | Keywords, control flow, `stop`, and `return` | Magenta `#DF1964` |
 | Parentheses, brackets, and braces | Rose `#D75A80` |
