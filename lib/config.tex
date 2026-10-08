@@ -24,15 +24,15 @@
 \definecolor{light}{HTML}{e1f0c7}
 
 % Code chunk styling: Hate of Nature Light
-% Darker versions of the theme accents for the existing warm background.
-\definecolor{codeforeground}{HTML}{354B20}
+% Vivid green accents and deeper companion colors on the warm background.
+\definecolor{codeforeground}{HTML}{4B7620}
 \definecolor{codecomment}{HTML}{627248}
 \definecolor{codepink}{HTML}{BF2056}
 \definecolor{codegold}{HTML}{826A0C}
 \definecolor{codeorange}{HTML}{A94F0A}
 \definecolor{codepurple}{HTML}{7850AF}
 \definecolor{codecyan}{HTML}{007A87}
-\definecolor{codegreen}{HTML}{4D7215}
+\definecolor{codegreen}{HTML}{679B19}
 
 \makeatletter
 \AtBeginDocument{%
@@ -43,7 +43,7 @@
     }%
   }%
   \@ifundefined{NormalTok}{}{\renewcommand{\NormalTok}[1]{\textcolor{codeforeground}{#1}}}%
-  \@ifundefined{KeywordTok}{}{\renewcommand{\KeywordTok}[1]{\textcolor{codepink}{\textbf{#1}}}}%
+  \@ifundefined{KeywordTok}{}{\renewcommand{\KeywordTok}[1]{\textcolor{codegreen}{\textbf{#1}}}}%
   \@ifundefined{ControlFlowTok}{}{\renewcommand{\ControlFlowTok}[1]{\textcolor{codepink}{\textbf{#1}}}}%
   \@ifundefined{DataTypeTok}{}{\renewcommand{\DataTypeTok}[1]{\textcolor{codegreen}{#1}}}%
   \@ifundefined{FunctionTok}{}{\renewcommand{\FunctionTok}[1]{\textcolor{codecyan}{#1}}}%
@@ -51,7 +51,7 @@
   \@ifundefined{ExtensionTok}{}{\renewcommand{\ExtensionTok}[1]{\textcolor{codecyan}{#1}}}%
   \@ifundefined{ImportTok}{}{\renewcommand{\ImportTok}[1]{\textcolor{codegreen}{#1}}}%
   \@ifundefined{VariableTok}{}{\renewcommand{\VariableTok}[1]{\textcolor{codeorange}{#1}}}%
-  \@ifundefined{AttributeTok}{}{\renewcommand{\AttributeTok}[1]{\textcolor{codeorange}{#1}}}%
+  \@ifundefined{AttributeTok}{}{\renewcommand{\AttributeTok}[1]{\textcolor{codegreen}{#1}}}%
   \@ifundefined{OperatorTok}{}{\renewcommand{\OperatorTok}[1]{\textcolor{codepink}{#1}}}%
   \@ifundefined{OtherTok}{}{\renewcommand{\OtherTok}[1]{\textcolor{codepink}{#1}}}%
   \@ifundefined{SpecialCharTok}{}{\renewcommand{\SpecialCharTok}[1]{\textcolor{codepink}{#1}}}%

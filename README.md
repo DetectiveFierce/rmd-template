@@ -80,21 +80,23 @@ Zed users can run the `Knit Current Rmd` task. VS Code users can run the `Knit` 
 - Section formatting.
 - Hate of Nature Light syntax highlighting for code chunks.
 
-The code chunks use a light adaptation of Hate of Nature, with darker versions of its green, pink, yellow, orange, violet, and cyan accents. The existing warm background (`#FCF9EC`) and footnote-sized code are preserved. Code colors are separate from the document's other color definitions.
+The code chunks use a light adaptation of Hate of Nature, with vivid leaf green and deeper pink, yellow, orange, violet, and cyan accents. The existing warm background (`#FCF9EC`) and footnote-sized code are preserved. Code colors are separate from the document's other color definitions.
 
 | Syntax role | Color |
 |---|---|
-| Plain code | Olive `#354B20` |
+| Plain code | Grass green `#4B7620` |
 | Comments and documentation | Moss `#627248`, italic |
-| Keywords and control flow | Pink `#BF2056`, bold |
+| Keywords | Bright leaf green `#679B19`, bold |
+| Control flow | Pink `#BF2056`, bold |
 | Operators, assignment, and special characters | Pink `#BF2056` |
 | Strings and characters | Ochre `#826A0C` |
-| Variables and named arguments | Burnt orange `#A94F0A` |
+| Variables | Burnt orange `#A94F0A` |
+| Named arguments | Bright leaf green `#679B19` |
 | Numbers and constants | Violet `#7850AF`, bold |
 | Functions | Cyan `#007A87` |
-| Built-ins, types, and imports | Leaf green `#4D7215` |
+| Built-ins, types, and imports | Bright leaf green `#679B19` |
 
-Pandoc's R tokenizer determines each token category; identifiers it classifies as plain code use olive. Every text color has at least 4.5:1 contrast against the chunk background.
+Pandoc's R tokenizer determines each token category; identifiers it classifies as plain code use grass green. Brighter leaf green highlights keywords and named arguments.
 
 Preview rendered with the shared LaTeX configuration:
 
