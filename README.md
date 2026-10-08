@@ -78,9 +78,27 @@ Zed users can run the `Knit Current Rmd` task. VS Code users can run the `Knit` 
 - Display math spacing.
 - Table spacing.
 - Section formatting.
-- Code chunk styling based on the MCMC notes.
+- Hate of Nature Light syntax highlighting for code chunks.
 
-The code chunk styling gives R chunks a warm shaded background, footnote-sized code, green keywords/control flow, blue functions, red strings, orange numeric constants, gray italic comments, and black operators.
+The code chunks use a light adaptation of Hate of Nature, with darker versions of its green, pink, yellow, orange, violet, and cyan accents. The existing warm background (`#FCF9EC`) and footnote-sized code are preserved. Code colors are separate from the document's other color definitions.
+
+| Syntax role | Color |
+|---|---|
+| Plain code | Olive `#354B20` |
+| Comments and documentation | Moss `#627248`, italic |
+| Keywords and control flow | Pink `#BF2056`, bold |
+| Operators, assignment, and special characters | Pink `#BF2056` |
+| Strings and characters | Ochre `#826A0C` |
+| Variables and named arguments | Burnt orange `#A94F0A` |
+| Numbers and constants | Violet `#7850AF`, bold |
+| Functions | Cyan `#007A87` |
+| Built-ins, types, and imports | Leaf green `#4D7215` |
+
+Pandoc's R tokenizer determines each token category; identifiers it classifies as plain code use olive. Every text color has at least 4.5:1 contrast against the chunk background.
+
+Preview rendered with the shared LaTeX configuration:
+
+![Hate of Nature Light R syntax highlighting](docs/hate-of-nature-light.png)
 
 `knit/knit.R` renders any Rmd in `Rmd Files/` to `output.pdf` in the project root.
 
